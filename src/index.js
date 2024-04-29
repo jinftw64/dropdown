@@ -1,9 +1,26 @@
-function helloWorld() {
-  const div = document.createElement('div')
+import './style.css';
 
-  div.textContent = 'Hello world!';
+function createDropDown(element) {
+  if (!element.classList.contains('dropdown')) {
+    return console.log('not a dropdown')
+  }
 
-  document.body.appendChild(div);
+  const button = element.querySelector('button');
+  const uL = element.querySelector('ul');
+
+  button.addEventListener('click', () => {
+    for (const child of uL.children) {
+      if (child.classList.contains('hidden')) {
+        child.classList.remove('hidden');
+      } else {
+        child.classList.add('hidden');
+      }
+    }
+  })
 }
 
-helloWorld();
+const first = document.querySelector('#first');
+const second = document.querySelector('#second');
+
+createDropDown(first);
+createDropDown(second);
